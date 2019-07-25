@@ -1,0 +1,55 @@
+# Link to part 1:
+https://docs.google.com/spreadsheets/d/1Iyk0_7elyugcRXTFUg3i_MVeLyWgR3QlgNgxgQKGyQo/edit#gid=0
+
+# Part 4
+
+# Exercise 1:
+SELECT * FROM articles WHERE author_id = (SELECT id FROM authors WHERE name = 'Kara Melton');
+
+# Exercise 2:
+SELECT * FROM cities WHERE province_id = (SELECT id FROM provinces WHERE name = 'Ontario');
+# Answer:
+ id |  name   | year_founded | province_id 
+----+---------+--------------+-------------
+  8 | Toronto |         1793 |          14
+ 11 | Ottawa  |         1826 |          14
+
+# Exercise 3:
+SELECT name FROM authors WHERE id = (SELECT author_id FROM articles WHERE title = 'Coding Bootcamps and Emotional Labor');
+# Answer:
+Tilde Ann Thurium
+
+# Exercise 4:
+SELECT COUNT(id) FROM provinces
+# Answer:
+14
+
+# Exercise 5:
+SELECT COUNT(id) FROM persons WHERE residence_id = (SELECT id FROM residences WHERE address = '4740 McDermott Street');
+# Answer:
+2
+
+# Exercise 6:
+SELECT name FROM cities WHERE id = (SELECT id FROM residences WHERE address = '4740 McDermott Street');
+# Answer:
+Montreal
+
+# Exercise 7:
+SELECT name FROM provinces WHERE id = (SELECT province_id FROM cities WHERE id = (SELECT id FROM residences WHERE address = '4740 McDermott Street'));
+# Answer:
+Quebec
+
+# Exercise 8:
+SELECT name FROM countries WHERE id = (SELECT country_id FROM provinces WHERE id = (SELECT province_id FROM cities WHERE id = (SELECT id FROM residences WHERE address = '4740 McDermott Street')));
+# Answer:
+Canada
+
+# Exercise 9:
+SELECT name FROM countries WHERE id = (SELECT country_id FROM provinces WHERE id = (SELECT province_id FROM cities WHERE id = (SELECT city_id FROM residences WHERE id = (SELECT id FROM persons WHERE name = 'Destini Davis'))));
+# Answer:
+Canada
+
+# Exercise 10:
+SELECT COUNT(id) FROM articles WHERE author_id = (SELECT id FROM authors WHERE name = 'Aditya Mukerjee');
+# Answer:
+1
